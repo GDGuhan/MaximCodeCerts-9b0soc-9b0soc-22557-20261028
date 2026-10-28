@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 20% 97%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 220 85% 28%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 45 85% 50%;
+    --secondary-foreground: 0 0% 10%;
+
+    --muted: 220 15% 93%;
+    --muted-foreground: 220 10% 45%;
+
+    --accent: 220 85% 28%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 15% 85%;
+    --input: 220 15% 85%;
+    --ring: 220 85% 28%;
+
+    --radius: 0.5rem;
+
+    --cert-blue: 220 85% 28%;
+    --cert-gold: 43 90% 48%;
+    --cert-gold-light: 45 100% 88%;
+    --cert-navy: 225 50% 15%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+/* Certificate-specific print styles */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #certificate-container,
+  #certificate-container * {
+    visibility: visible;
+  }
+  #certificate-container {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 297mm;
+    height: 210mm;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  @page {
+    size: A4 landscape;
+    margin: 0;
+  }
+}
+
+/* Certificate fixed layout */
+.certificate-wrapper {
+  width: 1123px;
+  height: 794px;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+/* QR Code canvas fix */
+canvas {
+  display: block;
+}
